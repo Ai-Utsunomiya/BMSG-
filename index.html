@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMSG Intern Portfolio | ひだまりの球体</title>
+    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com/"></script>
+    <!-- Lucide Icons --><script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* ------------------------------------------------------------------- */
+        /* BASE STYLES */
+        /* ------------------------------------------------------------------- */
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+        }
+        body {
+            background-color: #ffffff; 
+            color: #44403c; /* stone-800: Dark brown/gray */
+        }
+        /* Accent Colors (Amber/Orange Family) */
+        .accent-text { color: #d97706; } /* amber-600 */
+        .accent-bg { background-color: #d97706; }
+        .accent-border { border-color: #d97706; }
+        
+        /* ------------------------------------------------------------------- */
+        /* HERO SECTION STYLES */
+        /* ------------------------------------------------------------------- */
+        #hero {
+            position: relative; 
+            overflow: hidden; 
+            min-height: 100vh;
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background-color: #1c1917; 
+        }
+
+        .slideshow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .slideshow-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            transform: scale(1.05);
+            filter: blur(3px) brightness(0.8); 
+        }
+
+        .slideshow-item.active {
+            opacity: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2); 
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 56rem;
+            margin: 0 auto;
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .hero-content .accent-text { color: #fcd34d; } /* Bright yellow */
+        .hero-content .text-stone-500 { color: #e7e5e4 !important; }
+
+        .hero-title-novel {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.4; 
+            letter-spacing: 0.1em; 
+        }
+        .chapter-heading {
+            font-family: serif; 
+            letter-spacing: 0.15em; 
+        }
+        
+        /* 動画サムネイルのプレイボタン強調 */
+        .video-thumbnail-overlay:hover .play-icon {
+            transform: scale(1.1);
+            color: #fff;
+        }
+
+        .img-item {
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .img-item:hover {
+            transform: scale(1.02);
+        }
+
+        /* 新しいボタンのスタイル */
+        .story-btn {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            font-size: 1.125rem; /* text-xl */
+            font-weight: 700; /* font-bold */
+        }
+        .story-btn:hover {
+            background-color: #b45309; /* darker amber */
+            box-shadow: 0 8px 15px rgba(245, 158, 11, 0.4); /* amber-400 shadow */
+        }
+    </style>
+</head>
+<body class="text-stone-800">
+
+    <!-- Navigation --><header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md border-b border-stone-200">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#hero" class="text-xl font-bold tracking-wider accent-text">Ai Utsunomiya</a>
+            <div class="hidden sm:flex space-x-6 text-sm font-medium text-stone-700">
+                <a href="#philosophy" class="hover:text-amber-600 transition">理念</a>
+                <a href="#whoiam" class="hover:text-amber-600 transition">多面性</a>
+                <a href="#works" class="hover:text-amber-600 transition">実績</a>
+                <a href="#message" class="hover:text-amber-600 transition">約束</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 1. HERO Section (Slideshow Background + Centered Text) --><section id="hero">
+            
+            <!-- ★★★ 【重要】スライドショーの画像設定 ★★★ -->
+            <div class="slideshow-container">
+                <!-- 1枚目 --><img src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/f8ca97ca45c3514409fa2472cc66e960~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=e61c18ff&x-expires=1764140400&x-signature=VrZo8sugxwB5fXFgceewOQ%2FQW48%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my" class="slideshow-item active" alt="Background 1">
+                <!-- 2枚目 --><img src="https://assets.st-note.com/production/uploads/images/177976936/rectangle_large_type_2_bf4e219de009ff681e3f81f38f582562.jpeg?width=1280" class="slideshow-item" alt="Background 2">
+                <!-- 3枚目 --><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9Y8LUePXnhBr8BKduVoisWAyMNoWWCYmF5g&s" class="slideshow-item" alt="Background 3">
+            </div>
+
+            <!-- オーバーレイ (文字を見やすくする) --><div class="hero-overlay"></div>
+
+            <!-- 中央配置されたテキストコンテンツ --><div class="hero-content space-y-8">
+                <p class="text-xl sm:text-2xl chapter-heading text-stone-500">
+                    Chapter 1: 始まりの言葉
+                </p>
+
+                <h1 class="hero-title-novel font-extrabold">
+                    <span class="accent-text">『頑張る』人を、</span><br>
+                    <span class="accent-text">『顔晴る』人へ。</span>
+                </h1>
+                
+                <p class="text-lg sm:text-xl pt-4 leading-loose font-medium">
+                    全ての挑戦者の帆走者として。<br>
+                    あなたの幸福を照らす「ひだまり」でありたい。
+                </p>
+                
+                <p class="text-base sm:text-lg font-semibold pt-4">
+                    宇都宮 愛唯 (Ai Utsunomiya)
+                </p>
+
+                <!-- ★★★ 修正箇所: ボタンの文言とアイコンを更新 ★★★ -->
+                <div class="mt-12">
+                    <a href="#philosophy" class="story-btn inline-flex items-center justify-center px-8 py-4 rounded-full shadow-lg text-white accent-bg hover:bg-amber-700 transition transform hover:scale-105">
+                        <i data-lucide="book-open-text" class="w-6 h-6 mr-3"></i>
+                        <span>私の人生のページを開く</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. PHILOSOPHY Section (理念) -->
+        <section id="philosophy" class="container mx-auto px-6 py-24 bg-stone-50 shadow-xl my-10 rounded-lg max-w-5xl">
+            <div class="space-y-10">
+                <p class="text-lg text-stone-500 chapter-heading">Chapter 2: 理念</p>
+                <div class="flex items-center space-x-4">
+                    <i data-lucide="sun" class="w-10 h-10 accent-text"></i>
+                    <h2 class="text-3xl font-bold text-stone-800">Theme: ひだまり</h2>
+                </div>
+                <div class="text-lg leading-relaxed space-y-6 text-stone-700">
+                    <p>
+                        現代社会、自分に根付いた環境から日々『頑張り』続けている全ての人たち。<br>
+                        私は、そんな彼らの幸せを照らす「ひだまり」となり、貴方が前を向いて
+                        <span class="font-bold accent-text">『顔晴れる（＝晴れやかな顔で輝ける）』ための帆走者</span>
+                        でありたい。
+                    </p>
+                    <blockquote class="pl-6 border-l-4 accent-border italic text-stone-600 bg-stone-50 py-4 pr-4 rounded-r-lg">
+                        私にとってのプロデュースとは、体温のあるコミュニケーションで、常に想像を巡らせ、利他的であること。<br>
+                        想いが溢れ、混ざり合う「場」を創り出し、暖かく空間ごとその背中を押す存在であることを誓います。
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. WHO I AM Section (多面性) -->
+        <section id="whoiam" class="container mx-auto px-6 py-24 max-w-6xl">
+            <div class="text-center mb-16">
+                <p class="text-lg text-stone-500 chapter-heading mb-2">Chapter 3: 多面体としての私</p>
+                <h2 class="text-4xl font-extrabold accent-text mb-6">私は、「ひだまりの球体」です。</h2>
+                <p class="text-xl text-stone-600">人間は、一色で語りきれない究極の多面体です。<br>だからこそ、私自身もひとつの役割に留まりません。</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1: 表現者としての視点 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 accent-border hover:-translate-y-1 transition duration-300">
+                    <i data-lucide="mic" class="w-10 h-10 accent-text mb-4"></i>
+                    <h4 class="text-xl font-bold mb-3">表現者としての視点</h4>
+                    <p class="text-stone-600">長年の楽器、歌、ダンスの経験を通じ、表現する喜びと、不安を知る感性を培いました。「個」に寄り添い、表現者の生きがいを守ります。</p>
+                </div>
+                <!-- Card 2: 観客としての視点 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 accent-border hover:-translate-y-1 transition duration-300">
+                    <i data-lucide="heart" class="w-10 h-10 accent-text mb-4"></i>
+                    <h4 class="text-xl font-bold mb-3">観客としての視点</h4>
+                    <p class="text-stone-600">誰かに救われる熱量と推し活心理への理解。健全な熱量と安心の場を創造します。</p>
+                </div>
+                <!-- Card 3: 運営としての視点 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 accent-border hover:-translate-y-1 transition duration-300">
+                    <i data-lucide="trello" class="w-10 h-10 accent-text mb-4"></i>
+                    <h4 class="text-xl font-bold mb-3">運営としての視点</h4>
+                    <p class="text-stone-600">夢を形にするための緻密な構造設計と遂行力。情熱を成果に変換し、プロジェクトを着実に推進します。</p>
+                </div>
+            </div>
+            <p class="mt-12 text-center text-xl font-medium text-stone-700">
+                <span class="accent-text font-bold">「感性」と「構造」の両軸</span>で幸福を循環させるプロデュースを。
+            </p>
+        </section>
+
+        <!-- 4. HISTORY & WORKS Section (実績) -->
+        <section id="works" class="bg-stone-100 py-24 shadow-inner">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <div class="text-center mb-16">
+                    <p class="text-lg text-stone-500 chapter-heading mb-2">Chapter 4: 形にした想い</p>
+                    <h2 class="text-3xl font-bold text-stone-800 border-b-2 accent-border inline-block pb-2">HISTORY & WORKS</h2>
+                    <p class="mt-6 text-lg text-stone-700 max-w-3xl mx-auto">
+                        大学で学んだ「場づくり」と現場での実務経験を統合し、人間ひとりひとりの「生」や「個性」が表現できる居場所を創るため、多角的に挑戦を続けてきました。
+                    </p>
+                </div>
+
+                <!-- University Activity -->
+                <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl mb-12">
+                    <h3 class="text-2xl font-extrabold accent-text mb-2">近畿大学 文芸学部 文化デザイン学科 ３回生</h3>
+                    <p class="text-lg font-bold text-stone-700 mb-6">プロデュースゼミ専攻</p>
+                    
+                    <div class="bg-stone-50 rounded-lg p-5 mb-8 border border-stone-200">
+                        <span class="font-bold text-stone-800 block mb-2">🏆 受賞歴</span>
+                        <p class="text-stone-700">カズキのタネ ダンス動画コンテスト2023 <span class="font-bold accent-text">カズキのタネ賞受賞</span></p>
+                    </div>
+
+                    <h4 class="text-xl font-bold text-stone-800 border-b pb-2 mb-6">主要な活動実績（大学）</h4>
+                    
+                    <!-- Activity Items --><div class="space-y-8">
+                        <!-- Item: ロッチル in ひらかたパーク -->
+                        <div class="border-l-4 border-stone-300 pl-4 hover:border-amber-500 transition">
+                            <h5 class="text-xl font-bold text-stone-800">ロッチル in ひらかたパーク</h5>
+                            <p class="text-stone-600 mb-2">子どもたちの夢で溢れた音楽フェス。学生実行委員、SNS運用、バックダンサーオーディション担当。</p>
+                            
+                            <a href="https://youtu.be/5GoxoY5M8wU" target="_blank" class="relative inline-block mt-2 mb-4 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition transform hover:scale-[1.01] max-w-full md:max-w-md">
+                                <img src="https://img.youtube.com/vi/5GoxoY5M8wU/hqdefault.jpg" 
+                                     alt="ロッチル in ひらかたパーク After Movie" 
+                                     class="w-full h-auto object-cover rounded-lg">
+                                <div class="video-thumbnail-overlay absolute inset-0 flex items-center justify-center bg-black/30 transition duration-300">
+                                    <i data-lucide="play-circle" class="play-icon w-16 h-16 text-white/90 transition duration-300"></i>
+                                </div>
+                            </a>
+
+                            <div class="flex space-x-4 text-sm">
+                                <a href="https://youtu.be/5GoxoY5M8wU" target="_blank" class="text-amber-600 hover:underline flex items-center"><i data-lucide="youtube" class="w-4 h-4 mr-1"></i>動画 (After Movie)</a>
+                                <a href="https://www.instagram.com/rocksforchile/" target="_blank" class="text-amber-600 hover:underline flex items-center"><i data-lucide="instagram" class="w-4 h-4 mr-1"></i>Instagram</a>
+                            </div>
+                        </div>
+
+                        <!-- Item: 心躍る街 合宿型音楽フェス -->
+                        <div class="border-l-4 border-stone-300 pl-4 hover:border-amber-500 transition">
+                            <h5 class="text-xl font-bold text-stone-800">心躍る街 合宿型音楽フェス</h5>
+                            <p class="text-stone-600 mb-2">すべての人に生きがいをもてる社会を創る「一般社団法人少年プロジェクト」と共に企画運営。キャンプ場貸切の音楽祭コンテンツリーダー。</p>
+                            
+                            <div class="flex flex-col md:flex-row gap-4 mt-2 mb-4">
+                                <a href="https://assets.st-note.com/production/uploads/images/177976936/rectangle_large_type_2_bf4e219de009ff681e3f81f38f582562.jpeg?width=1280" target="_blank" class="relative block flex-1 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition transform hover:scale-[1.01]">
+                                    <img src="https://assets.st-note.com/production/uploads/images/177976936/rectangle_large_type_2_bf4e219de009ff681e3f81f38f582562.jpeg?width=1280" 
+                                        alt="心躍る街 フェス風景" 
+                                        class="w-full h-auto object-cover rounded-lg">
+                                    <div class="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 hover:opacity-100 transition duration-300">
+                                        <i data-lucide="eye" class="w-8 h-8 text-white/90"></i>
+                                    </div>
+                                </a>
+
+                                <a href="https://youtu.be/B9Vu-qnzEE0" target="_blank" class="relative block flex-1 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition transform hover:scale-[1.01]">
+                                    <img src="https://img.youtube.com/vi/B9Vu-qnzEE0/hqdefault.jpg" 
+                                        alt="心躍る街 追加動画サムネイル" 
+                                        class="w-full h-auto object-cover rounded-lg">
+                                    <div class="video-thumbnail-overlay absolute inset-0 flex items-center justify-center bg-black/30 transition duration-300">
+                                        <i data-lucide="play-circle" class="play-icon w-16 h-16 text-white/90 transition duration-300"></i>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="flex space-x-4 text-sm">
+                                <a href="https://syonenpj.com/" target="_blank" class="text-amber-600 hover:underline flex items-center"><i data-lucide="link" class="w-4 h-4 mr-1"></i>少年プロジェクトHP</a>
+                                <a href="https://www.instagram.com/kokoroodorumachi/" target="_blank" class="text-amber-600 hover:underline flex items-center"><i data-lucide="instagram" class="w-4 h-4 mr-1"></i>Instagram</a>
+                                <a href="https://youtu.be/B9Vu-qnzEE0" target="_blank" class="text-amber-600 hover:underline flex items-center"><i data-lucide="youtube" class="w-4 h-4 mr-1"></i>追加動画リンク</a>
+                            </div>
+                        </div>
+
+                        <!-- PASSION WORLD in Zepp Namba -->
+                        <div class="border-l-4 border-stone-600 pl-4 py-6 bg-stone-50 rounded-r-xl shadow-md hover:border-amber-600 transition duration-300 mt-8">
+                            <h5 class="text-2xl font-extrabold accent-text mb-2">PASSION WORLD in Zepp Namba</h5>
+                            <p class="text-lg text-stone-700 mb-4">
+                                <span class="font-bold">音楽ステージプロデュース統括。</span><br>
+                                出演者・スタッフ・観客が一体となる「共創空間」の設計とディレクションを担当。
+                            </p>
+                            
+                            <div class="mt-3 flex items-start space-x-3">
+                                <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9Y8LUePXnhBr8BKduVoisWAyMNoWWCYmF5g&s" target="_blank" class="block w-16 h-16 flex-shrink-0">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9Y8LUePXnhBr8BKduVoisWAyMNoWWCYmF5g&s" alt="PASSION WORLD 写真" class="img-item w-full h-full object-cover">
+                                </a>
+                                <div class="flex flex-col justify-start pt-1">
+                                    <a href="https://www.instagram.com/passion.wf/" target="_blank" class="text-amber-600 hover:underline text-sm flex items-center"><i data-lucide="instagram" class="w-4 h-4 mr-1"></i>Instagram Link</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Grid for smaller items (その他の活動) -->
+                        <h4 class="text-xl font-bold text-stone-800 border-b pb-2 mb-6 mt-12">その他の活動</h4>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            
+                            <!-- ZINE 『:DETHEART』 -->
+                            <div class="bg-white p-4 rounded border shadow-sm">
+                                <h6 class="font-bold text-stone-800">ZINE 『:DETHEART』</h6>
+                                <p class="text-sm text-stone-600 mt-1">好きを叫べる文化創出を目指した雑誌制作団体。編集者・SNS担当。</p>
+                                <div class="mt-3 text-xs">
+                                    <a href="https://www.instagram.com/de_the_art" target="_blank" class="text-amber-600 hover:underline flex items-center"><i data-lucide="instagram" class="w-3 h-3 mr-1"></i>Instagram</a>
+                                </div>
+                            </div>
+
+                            <!-- Grooving Night -->
+                            <div class="bg-white p-4 rounded border shadow-sm">
+                                <h6 class="font-bold text-stone-800">Grooving Night</h6>
+                                <p class="text-sm text-stone-600 mt-1">読売テレビ主催の音楽イベントに福祉プロダクトを販売する「ここことか」として出展。<span class="font-bold accent-text">社長・SKY-HI 出演回</span>。</p>
+                                <div class="mt-3 flex space-x-4 text-xs">
+                                    <a href="https://www.instagram.com/grooving_night/" target="_blank" class="text-amber-600 hover:underline flex items-center"><i data-lucide="instagram" class="w-3 h-3 mr-1"></i>Instagram</a>
+                                    <a href="https://co-coco.jp/news/groovingnight/" target="_blank" class="text-amber-600 hover:underline flex items-center"><i data-lucide="file-text" class="w-3 h-3 mr-1"></i>記事</a>
+                                </div>
+                            </div>
+                            
+                            <!-- 同世代コミュニティ立ち上げ -->
+                            <div class="bg-white p-4 rounded border shadow-sm">
+                                <h6 class="font-bold text-stone-800">同世代コミュニティ立ち上げ</h6>
+                                <p class="text-sm text-stone-600 mt-1">コンセプト設計からトータルプロデュース。</p>
+                                <div class="mt-3 text-xs">
+                                    <a href="https://www.instagram.com/04kai_tumugu/" target="_blank" class="text-amber-600 hover:underline flex items-center"><i data-lucide="instagram" class="w-3 h-3 mr-1"></i>Instagram</a>
+                                </div>
+                            </div>
+                            <!-- 共創カフェ ふわみんご -->
+                            <div class="bg-white p-4 rounded border shadow-sm">
+                                <h6 class="font-bold text-stone-800">共創カフェ ふわみんご</h6>
+                                <p class="text-sm text-stone-600 mt-1">京橋で立ち上げ。売上高 前年比3倍。</p>
+                                <div class="mt-3 text-xs">
+                                    <a href="https://www.instagram.com/fuwamingo/" target="_blank" class="text-amber-600 hover:underline flex items-center"><i data-lucide="instagram" class="w-3 h-3 mr-1"></i>Instagram</a>
+                                </div>
+                            </div>
+                            <!-- 枯れないお花屋さん komohana. -->
+                            <div class="bg-white p-4 rounded border shadow-sm">
+                                <h6 class="font-bold text-stone-800">枯れないお花屋さん komohana.</h6>
+                                <p class="text-sm text-stone-600 mt-1">ハンドメイド作家として運営。</p>
+                                <!-- Photos -->
+                                <div class="mt-3 flex space-x-2">
+                                    <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsVFjU-KgH8HtG2KjZylno4kgARUSuGXwYyQnrjjyN1fVDtmRtaUGO_mS8xLQs9M_uwc4&usqp=CAU" target="_blank" class="block w-12 h-12">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsVFjU-KgH8HtG2KjZylno4kgARUSuGXwYyQnrjjyN1fVDtmRtaUGO_mS8xQs9M_uwc4&usqp=CAU" alt="komohana. 写真1" class="img-item w-full h-full object-cover">
+                                    </a>
+                                    <a href="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/f8ca97ca45c3514409fa2472cc66e960~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=e61c18ff&x-expires=1764140400&x-signature=VrZo8sugxwB5fXFgceewOQ%2FQW48%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my" target="_blank" class="block w-12 h-12">
+                                        <img src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/f8ca97ca45c3514409fa2472cc66e960~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=e61c18ff&x-expires=1764140400&x-signature=VrZo8sugxwB5fXFgceewOQ%2FQW48%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my" alt="komohana. 写真2" class="img-item w-full h-full object-cover">
+                                    </a>
+                                </div>
+                                <!-- Links -->
+                                <div class="mt-3 flex space-x-4 text-xs">
+                                    <a href="https://www.instagram.com/komohana.gram/" target="_blank" class="text-amber-600 hover:underline flex items-center"><i data-lucide="instagram" class="w-3 h-3 mr-1"></i>Instagram</a>
+                                    <a href="https://www.threads.com/@komohana.gram?xmt=AQF0u9uW-Tpc3U6sZCwhpNpK1vB0w4Q1oxMQonskCr97SiU" target="_blank" class="text-amber-600 hover:underline flex items-center"><i data-lucide="message-square" class="w-3 h-3 mr-1"></i>Threads</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- High School -->
+                <div class="bg-stone-200 p-8 rounded-2xl border-2 border-stone-300">
+                    <h3 class="text-2xl font-bold text-stone-600 mb-6">中学・高校時代（原点）</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h5 class="font-bold text-stone-800 mb-2">💃 ダンス部 (6年/リーダー)</h5>
+                            <p class="text-sm text-stone-600">中高顧問不在。高校は創部メンバーとして30名を指導。</p>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-stone-800 mb-2">🕊 鸛部 (自然科学部)</h5>
+                            <p class="text-sm text-stone-600">環境・野鳥保護、小学生向けイベント企画、市の環境啓発CM監督。</p>
+                        </div>
+                    </div>
+
+                    <!-- MUSIC IN RESIDENCE in豊岡 -->
+                    <div class="mt-8 pt-6 border-t border-stone-300">
+                        <h5 class="font-bold text-amber-700 text-xl mb-2">MUSIC IN RESIDENCE in豊岡</h5>
+                        <p class="text-sm text-stone-700 leading-relaxed mb-4">
+                            HIP LAND MUSIC／MASH A&Rの柳井貢さんなどとの学生共同音楽イベント企画。
+                            <span class="font-bold accent-text block mt-1">ダンス部代表として企画から出演まで携わる。</span>
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="https://tonderu-local.com/wp-content/uploads/2022/03/2845c3f74999cf9c7de3c50b9c166711-620x414.jpg" target="_blank" class="relative block flex-1 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition transform hover:scale-[1.01] max-w-full sm:max-w-[50%]">
+                                <img src="https://tonderu-local.com/wp-content/uploads/2022/03/2845c3f74999cf9c7de3c50b9c166711-620x414.jpg" 
+                                    alt="MUSIC IN RESIDENCE in豊岡 写真" 
+                                    class="w-full h-auto object-cover rounded-lg">
+                                <div class="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 hover:opacity-100 transition duration-300">
+                                    <i data-lucide="eye" class="w-8 h-8 text-white/90"></i>
+                                    </div>
+                                </a>
+
+                            <a href="https://youtu.be/pdpMDiAqqJg" target="_blank" class="relative block flex-1 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition transform hover:scale-[1.01] max-w-full sm:max-w-[50%]">
+                                <img src="https://img.youtube.com/vi/pdpMDiAqqJg/hqdefault.jpg" 
+                                    alt="MUSIC IN RESIDENCE in豊岡 動画サムネイル" 
+                                    class="w-full h-auto object-cover rounded-lg">
+                                <div class="video-thumbnail-overlay absolute inset-0 flex items-center justify-center bg-black/30 transition duration-300">
+                                    <i data-lucide="play-circle" class="play-icon w-12 h-12 text-white/90 transition duration-300"></i>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <!-- リンク群 -->
+                        <div class="flex space-x-4 text-sm mt-3">
+                            <a href="https://tonderu-local.com/archives/14981" target="_blank" class="text-amber-600 hover:underline flex items-center"><i data-lucide="link" class="w-4 h-4 mr-1"></i>記事リンク</a>
+                            <a href="https://youtu.be/pdpMDiAqqJg" target="_blank" class="text-amber-600 hover:underline flex items-center"><i data-lucide="youtube" class="w-4 h-4 mr-1"></i>動画リンク</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. MESSAGE Section (BMSGへの約束) -->
+        <section id="message" class="container mx-auto px-6 py-32 text-center">
+            <p class="text-lg text-stone-500 chapter-heading mb-2">Chapter 5: 約束の場所へ</p>
+            <h2 class="text-5xl font-extrabold accent-text mb-12">1年越しの約束。</h2>
+            <div class="max-w-3xl mx-auto bg-white p-10 rounded-3xl shadow-2xl border-2 border-amber-500/30 space-y-8">
+                <p class="text-xl text-stone-700 leading-relaxed">
+                    貴社への参画を目指し行動を続けた結果、<span class="font-bold accent-text">社長・SKY-HI出演</span>のイベントに、ブース出展者として立つ機会を得ました。<br>
+                    マネージャー様へ、この場に辿り着いた強い決意と熱意を託しました。
+                </p>
+                <div class="py-6">
+                    <span class="text-3xl font-bold italic accent-text block">「1年後、必ず一緒に働きます」</span>
+                </div>
+                <p class="text-xl text-stone-700 leading-relaxed">
+                    この言葉と、それを実現するための行動こそが、私の覚悟の原点です。<br>
+                    誰の挑戦も否定しない。誰も置き去りにしない。<br>
+                    そんなエンタメ業界のひだまりである<span class="font-bold accent-text">「BMSG」</span>を共に創りたい。
+                </p>
+                <p class="text-lg font-bold accent-text">
+                    あの日誓った約束を、貴社の一員として未来を共に創ることで、果たしたいと考えています。
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer --><footer class="bg-stone-800 text-stone-300 py-16 text-center">
+            <h3 class="text-2xl font-bold text-white mb-6">Contact</h3>
+            <div class="flex justify-center space-x-8 mb-10">
+                <a href="mailto:email@example.com" class="hover:text-amber-500 transition"><i data-lucide="mail" class="inline mr-2"></i>Email</a>
+                <a href="#" class="hover:text-amber-500 transition"><i data-lucide="twitter" class="inline mr-2"></i>X (Twitter)</a>
+            </div>
+            <div class="max-w-3xl mx-auto px-6 border-t border-stone-600 pt-8">
+                <p class="text-sm italic leading-relaxed text-stone-400">
+                    My Core Strength: 惚れた対象の魅力を最大化するプロデュース力。「感性」と「構造」の両軸でプロジェクトを推進し、表現者・ファン・スタッフの幸福を循環させます。
+                </p>
+                <p class="mt-8 text-xs text-stone-600">&copy; Ai Utsunomiya Portfolio.</p>
+            </div>
+        </footer>
+
+    </main>
+    
+    <script>
+        // Lucide Iconsを生成
+        lucide.createIcons();
+
+        // スライドショーのスクリプト
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('.slideshow-item');
+            if (items.length === 0) return;
+            let currentIndex = 0;
+            
+            // 最初の画像を active にする
+            items[currentIndex].classList.add('active');
+
+            // 4秒ごとに切り替え
+            setInterval(() => {
+                items[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % items.length;
+                items[currentIndex].classList.add('active');
+            }, 4000); 
+        });
+    </script>
+</body>
+</html>
